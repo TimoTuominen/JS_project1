@@ -45,8 +45,8 @@ console.log(raksitut);
 
 laheta.addEventListener("click", function(){
     syote = document.getElementById("teksti").value;
-    ulLista.innerHTML +=  `<li id="${laskuri}"><input type="checkbox"><span> ${syote} </span> <button type="button">Poista</button> </li>`;
-    let data = `<li id="${laskuri}"><input type="checkbox"><span> ${syote} </span><button type="button">Poista</button> </li>`;
+    ulLista.innerHTML +=  `<li id="${laskuri}"><input type="checkbox"><span> ${syote} </span> <button type="button" class = Lbutton>Poista</button> </li>`;
+    let data = `<li id="${laskuri}"><input type="checkbox"><span> ${syote} </span><button type="button" class = Lbutton>Poista</button> </li>`;
     localStorage.setItem(laskuri,data);
     laskuri++;
     

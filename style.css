@@ -1,0 +1,61 @@
+@import url("https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap");
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+font-family: "Fredoka One";
+background-color: cadetblue;
+
+}
+
+.container{
+    border: 1px solid black;
+    
+    width: 80%;
+    margin: auto;
+
+}
+
+.otsikko{
+    margin-top: 25px;
+    padding: 10px;
+}
+
+.syotto{
+    margin-bottom: 10px;
+}
+
+.lomake{
+    
+    padding: 10px;
+   margin-bottom: 10px;
+    width: 300px;
+    overflow: auto;
+}
+
+.listaus{
+    border: 1px solid black;
+    margin-top: 10px;
+    padding: 10px;
+}
+
+#lista{
+    border: 1px solid black;
+    list-style-type: none;
+    padding: 10px;
+   
+}
+
+span{ 
+  
+}
+
+
+.Lbutton{
+    float: right;
+    color: blue;
+}

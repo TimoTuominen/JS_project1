@@ -8,16 +8,16 @@
     <link rel="shortcut icon" href="#" />
   </head>
   <body>
+    <div class = container>
+    <div class = otsikko><h2>To-Do List</h2></div>
+    <div class = runko>
 
-    <div class = otsikko>Java Projekti</div>
-    <div class = syotto>
-
-     
       <form class = lomake action="#">
+        <div class = syotto>
         <input type="text" id = "teksti">
         <input type="submit" value = "Lähetä" id = "laheta">
         <input type="reset" value = "Poista kaikki" id = "poistakaikki">
-
+      </div>
        <div class listaus>
          <ul id = lista></ul>
         </div>
@@ -26,6 +26,7 @@
 
    
     </div>
+  </div>
 	<script src="script.js"></script>
   </body>
 </html>
