@@ -7,17 +7,14 @@
 }
 
 body{
-font-family: "Fredoka One";
-background-color: cadetblue;
+    font-family: "Fredoka One";
+    background-color: cadetblue;
 
 }
 
 .container{
-    border: 1px solid black;
-    
     width: 80%;
     margin: auto;
-
 }
 
 .otsikko{
@@ -30,32 +27,37 @@ background-color: cadetblue;
 }
 
 .lomake{
-    
     padding: 10px;
-   margin-bottom: 10px;
+    margin-bottom: 10px;
     width: 300px;
     overflow: auto;
 }
 
 .listaus{
-    border: 1px solid black;
-    margin-top: 10px;
+    
+    margin-top: 10px;;
     padding: 10px;
 }
 
 #lista{
     border: 1px solid black;
+    border-radius: 10px; 
     list-style-type: none;
     padding: 10px;
    
 }
 
-span{ 
+#teksti{
+    outline: none;
+    border: 1px solid gray;
+    padding: 3px;
+    border-radius: 5px; 
   
 }
-
+.naytettavat{
+    margin-top: 10px;
+}
 
 .Lbutton{
     float: right;
-    color: blue;
 }
