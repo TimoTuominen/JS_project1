@@ -1,13 +1,14 @@
-
+// Haetaan elementit ja alustetaan muuttujia
 let ulLista = document.getElementById("lista");
 let syote = document.getElementById("teksti").value;
 let laheta = document.getElementById("laheta");
 let poistakaikki = document.getElementById("poistakaikki");
 let laskuri = 0;
 let tunnus2;
-let raksitut = JSON.parse(localStorage.getItem("raksitut"));
 
-// raksitut = JSON.parse(localStorage.getItem("raksitut"));
+let raksitut = [];
+//let raksitut = JSON.parse(localStorage.getItem("raksitut"));
+
 
 function merkitseRasti(tunnus2) {
     
@@ -15,20 +16,35 @@ function merkitseRasti(tunnus2) {
        id: tunnus2,
        tila: true
     });
-    localStorage.setItem("raksitut", JSON.stringify(raksitut));
+    //localStorage.setItem("raksitut", JSON.stringify(raksitut));
     //console.log(raksitut);
     //alert("onnistui3");
 }
 
 
 
+// Haetaan tiedot Local Storagesta ja printataan ne ruudulle.
 
 if (localStorage.length !== null) {
-for (var i = localStorage.length-1; i >= 0; i--){
-    ulLista.innerHTML += localStorage.getItem(localStorage.key(i));
+for (var i = 0 ; i < localStorage.length+1; i++){
+    let naytettava = localStorage.getItem("js"+i);
+    if (naytettava !== null){
+    ulLista.innerHTML += naytettava;
+    }
+    laskuri = localStorage.length;
+   /* let testi = document.getElementById("cb"+i);
+    if (testi === null){testi = 1000000}
+    let testi2 = document.getElementById(i);
+    if (testi === testi2){
+        //alert("onnistui2");
+    testi.checked = true;
+    }
+    */
 }
 
 }
+
+// luetaan Associative Arrayn pituus
 
 Object.size = function(arr) {
     var size = 0;
@@ -39,20 +55,32 @@ Object.size = function(arr) {
 };
 
 let pituus = Object.size(raksitut);
-console.log(pituus);
-console.log(raksitut);
+
+//console.log(pituus);
+//console.log(raksitut);
+
+// Lähetä napin painalluksen logiikka, tarkistetaan annettu teksti, luetaan tieto ja sijoitetaan se listaan.
+
 
 
 laheta.addEventListener("click", function(){
     syote = document.getElementById("teksti").value;
-    ulLista.innerHTML +=  `<li id="${laskuri}"><input type="checkbox"><span> ${syote} </span> <button type="button" class = Lbutton>Poista</button> </li>`;
-    let data = `<li id="${laskuri}"><input type="checkbox"><span> ${syote} </span><button type="button" class = Lbutton>Poista</button> </li>`;
-    localStorage.setItem(laskuri,data);
+
+    if (!syote || syote.length < 3) {
+        alert("Epäkelpo syöte, yritä uudelleen")
+        teksti.style.border ="1px solid red";
+    }
+
+    else {
+    ulLista.innerHTML +=  `<li id="${laskuri}"><input type="checkbox" id = cb${laskuri} ><span> ${syote} </span> <button type="button" class = Lbutton>Poista</button></li>`;
+    let data = `<li id="${laskuri}"><input type="checkbox" id = cb${laskuri}><span> ${syote} </span><button type="button" class = Lbutton>Poista</button></li>`;
+    localStorage.setItem("js"+laskuri,data);
     laskuri++;
-    
+    teksti.style.border ="1px solid grey";
+    }
 })
 
-
+// Reagoidaan poista napin painallukseen, etsitään oikea lista objekti ja poistetaan se.
 
 ulLista.addEventListener("click", (event) => {
     if(event.target.tagName === "BUTTON"){
@@ -60,12 +88,16 @@ ulLista.addEventListener("click", (event) => {
         const li = reset.parentNode;
         const ul = li.parentNode;
         let tunnus = li.getAttribute("id");
-        // console.log(tunnus);
-        localStorage.removeItem(tunnus);
+        console.log(tunnus);
+        let JStunnus = "js"+tunnus;
+        console.log(JStunnus);
+        localStorage.removeItem("js"+tunnus);
         ul.removeChild(li);
     }
     
 })
+
+// Kirjataan klikattu chekbox:i ruksituksi taulukkoon
 
 ulLista.addEventListener("change", (event) => {
     if(event.target.type === "checkbox"){
@@ -74,12 +106,14 @@ ulLista.addEventListener("change", (event) => {
         const ul2 = li2.parentNode;
         tunnus2 = li2.getAttribute("id");
         merkitseRasti(tunnus2);
-        //localStorage.setItem("raksitut", JSON.stringify(raksitut));
+        localStorage.setItem(tunnus2, JSON.stringify(raksitut));
         //console.log(tunnus2);        
-        alert("onnistui2");
+        //alert("onnistui2");
         
     }
 })
+
+// Poista kaikki nappin painalluksella tyhjennetään local Storage ja refreshataan sovellus.
 
 poistakaikki.addEventListener("click", function(){
 
@@ -87,5 +121,17 @@ poistakaikki.addEventListener("click", function(){
     location.reload();
 })
 
+// Funktio merkattujen piilottamiseen
 
-//console.log(localStorage);
+/*function piiloita(syote){
+
+    let elementti = document.getElementById(syote) 
+
+        if(){}
+
+    
+
+} */
+
+
+console.log(localStorage);
