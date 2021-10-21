@@ -18,7 +18,6 @@ let tunnus2;
 if (localStorage.length !== null) {
   for (var i = 0; i <= laskuri; i++) {
     let naytettava = localStorage.getItem("js" + i);
-    console.log(localStorage.key(i));
     if (naytettava !== null) {
       ulLista.innerHTML += naytettava;
     }
@@ -26,7 +25,10 @@ if (localStorage.length !== null) {
   for (var i = 0; i <= laskuri; i++) {
     let raksi = localStorage.getItem("cb" + i);
     if (raksi !== null) {
-      document.getElementById(raksi).checked = true;
+      let tarkistus = document.getElementById(raksi);
+      if (tarkistus !== null) {
+        tarkistus.checked = true;
+      }
     }
   }
 }
@@ -58,22 +60,19 @@ ulLista.addEventListener("click", (event) => {
     let tunnus = li.getAttribute("id");
     localStorage.removeItem("js" + tunnus);
     ul.removeChild(li);
-    // Lisätään poiston yhteydessä satunnainen objekti local storageen, jotta palautus for loop tekee tarpeeksi kierroksia.
+    // Lisätään poiston yhteydessä satunnainen objekti local storageen, jotta palautus "for loop" tekee tarpeeksi kierroksia.
     let token = Math.floor(Math.random() * 100000);
     localStorage.setItem(token, JSON.stringify(token));
   }
 });
 
-// Kirjataan klikattu chekbox:i ruksituksi taulukkoon
+// Kirjataan klikattu chekbox:i ruksituksi
 
 ulLista.addEventListener("change", (event) => {
   if (event.target.type === "checkbox") {
     const checkbox = event.target;
-    const li2 = checkbox.parentNode;
-    const ul2 = li2.parentNode;
     tunnus2 = checkbox.getAttribute("id");
     localStorage.setItem(tunnus2, tunnus2);
-    alert(tunnus2);
   }
 });
 
@@ -84,16 +83,16 @@ poistakaikki.addEventListener("click", function () {
   location.reload();
 });
 
+// Näytetään tehdyt tehtävät napinpainalluksella
+
 tehdyt.addEventListener("click", function () {
   ulLista.innerHTML = "";
   if (localStorage.length !== null) {
     for (var i = 0; i <= laskuri; i++) {
       let naytettava = localStorage.getItem("js" + i);
-      console.log(localStorage.key(i));
       if (naytettava !== null) {
         ulLista.innerHTML += naytettava;
         let piilotettava = document.getElementById(i);
-        //alert(piilotettava);
         piilotettava.style.display = "none";
       }
     }
@@ -101,19 +100,22 @@ tehdyt.addEventListener("click", function () {
       let raksi = localStorage.getItem("cb" + i);
       if (raksi !== null) {
         let naytettava = document.getElementById(raksi).parentNode;
-        naytettava.style.display = "block";
-        document.getElementById(raksi).checked = true;
+        if (naytettava !== null) {
+          naytettava.style.display = "block";
+          document.getElementById(raksi).checked = true;
+        }
       }
     }
   }
 });
+
+// Näytetään tekemättömät työt napin painalluksella
 
 tekemattomat.addEventListener("click", function () {
   ulLista.innerHTML = "";
   if (localStorage.length !== null) {
     for (var i = 0; i <= laskuri; i++) {
       let naytettava = localStorage.getItem("js" + i);
-      console.log(localStorage.key(i));
       if (naytettava !== null) {
         ulLista.innerHTML += naytettava;
       }
@@ -122,18 +124,21 @@ tekemattomat.addEventListener("click", function () {
       let raksi = localStorage.getItem("cb" + i);
       if (raksi !== null) {
         let naytettava = document.getElementById(raksi).parentNode;
-        naytettava.style.display = "none";
-        document.getElementById(raksi).checked = true;
+        if (naytettava !== null) {
+          naytettava.style.display = "none";
+          document.getElementById(raksi).checked = true;
+        }
       }
     }
   }
 });
 
+// Näytetään kaikki tehtävät napin painalluksella
+
 kaikki.addEventListener("click", function () {
   ulLista.innerHTML = "";
   for (var i = 0; i <= laskuri; i++) {
     let naytettava = localStorage.getItem("js" + i);
-    console.log(localStorage.key(i));
     if (naytettava !== null) {
       ulLista.innerHTML += naytettava;
     }
@@ -141,7 +146,10 @@ kaikki.addEventListener("click", function () {
   for (var i = 0; i <= laskuri; i++) {
     let raksi = localStorage.getItem("cb" + i);
     if (raksi !== null) {
-      document.getElementById(raksi).checked = true;
+      let tarkistus = document.getElementById(raksi);
+      if (tarkistus !== null) {
+        tarkistus.checked = true;
+      }
     }
   }
 });
