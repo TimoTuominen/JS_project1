@@ -72,7 +72,11 @@ ulLista.addEventListener("change", (event) => {
   if (event.target.type === "checkbox") {
     const checkbox = event.target;
     tunnus2 = checkbox.getAttribute("id");
-    localStorage.setItem(tunnus2, tunnus2);
+    if (checkbox.checked) {
+      localStorage.setItem(tunnus2, tunnus2);
+    } else {
+      localStorage.removeItem(tunnus2, tunnus2);
+    }
   }
 });
 
