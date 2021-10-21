@@ -127,8 +127,8 @@ tekemattomat.addEventListener("click", function () {
     for (var i = 0; i <= laskuri; i++) {
       let raksi = localStorage.getItem("cb" + i);
       if (raksi !== null) {
-        let naytettava = document.getElementById(raksi).parentNode;
-        if (naytettava !== null) {
+        if (document.getElementById(raksi).parentNode !== null) {
+          let naytettava = document.getElementById(raksi).parentNode;
           naytettava.style.display = "none";
           document.getElementById(raksi).checked = true;
         }
