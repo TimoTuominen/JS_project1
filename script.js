@@ -45,6 +45,18 @@ laheta.addEventListener("click", function () {
     ulLista.innerHTML += `<li id="${laskuri}"><input type="checkbox" id = cb${laskuri} ><span> ${syote} </span> <button type="button" class = Lbutton>Poista</button></li>`;
     let data = `<li id="${laskuri}"><input type="checkbox" id = cb${laskuri}><span> ${syote} </span><button type="button" class = Lbutton>Poista</button></li>`;
     localStorage.setItem("js" + laskuri, data);
+
+    // Lisätään raksit checkboxeihin
+    for (var i = 0; i <= laskuri; i++) {
+      let raksi = localStorage.getItem("cb" + i);
+      if (raksi !== null) {
+        let tarkistus = document.getElementById(raksi);
+        if (tarkistus !== null) {
+          tarkistus.checked = true;
+        }
+      }
+    }
+
     laskuri++;
     teksti.style.border = "1px solid grey";
   }
