@@ -1,4 +1,8 @@
 // Haetaan elementit ja alustetaan muuttujia
+
+const kaikki = document.getElementById("kaikki");
+const tekemattomat = document.getElementById("tekemattomat");
+const tehdyt = document.getElementById("tehdyt");
 const ulLista = document.getElementById("lista");
 let syote = document.getElementById("teksti").value;
 const laheta = document.getElementById("laheta");
@@ -69,10 +73,7 @@ ulLista.addEventListener("change", (event) => {
     const ul2 = li2.parentNode;
     tunnus2 = checkbox.getAttribute("id");
     localStorage.setItem(tunnus2, tunnus2);
-    //tunnus2 = li2.getAttribute("id");
     alert(tunnus2);
-    //merkitseRasti(tunnus2);
-    //localStorage.setItem(tunnus2, JSON.stringify(raksitut));
   }
 });
 
@@ -81,6 +82,54 @@ ulLista.addEventListener("change", (event) => {
 poistakaikki.addEventListener("click", function () {
   localStorage.clear();
   location.reload();
+});
+
+tehdyt.addEventListener("click", function () {
+  ulLista.innerHTML = "";
+  if (localStorage.length !== null) {
+    for (var i = 0; i <= laskuri; i++) {
+      let naytettava = localStorage.getItem("js" + i);
+      console.log(localStorage.key(i));
+      if (naytettava !== null) {
+        ulLista.innerHTML += naytettava;
+        let piilotettava = document.getElementById(i);
+        //alert(piilotettava);
+        piilotettava.style.display = "none";
+      }
+    }
+    for (var i = 0; i <= laskuri; i++) {
+      let raksi = localStorage.getItem("cb" + i);
+      if (raksi !== null) {
+        let naytettava = document.getElementById(raksi).parentNode;
+        naytettava.style.display = "block";
+        document.getElementById(raksi).checked = true;
+      }
+    }
+  }
+});
+
+tekemattomat.addEventListener("click", function () {
+  ulLista.innerHTML = "";
+  if (localStorage.length !== null) {
+    for (var i = 0; i <= laskuri; i++) {
+      let naytettava = localStorage.getItem("js" + i);
+      console.log(localStorage.key(i));
+      if (naytettava !== null) {
+        ulLista.innerHTML += naytettava;
+        let piilotettava = document.getElementById(i);
+        //alert(piilotettava);
+        //piilotettava.style.display = "none";
+      }
+    }
+    for (var i = 0; i <= laskuri; i++) {
+      let raksi = localStorage.getItem("cb" + i);
+      if (raksi !== null) {
+        let naytettava = document.getElementById(raksi).parentNode;
+        naytettava.style.display = "none";
+        document.getElementById(raksi).checked = true;
+      }
+    }
+  }
 });
 
 console.log(localStorage);
