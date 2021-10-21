@@ -1,63 +1,59 @@
 @import url("https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap");
 
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-body{
-    font-family: "Fredoka One";
-    background-color: cadetblue;
-
+body {
+  font-family: "Fredoka One";
+  background-color: cadetblue;
 }
 
-.container{
-    width: 80%;
-    margin: auto;
+.container {
+  width: 80%;
+  margin: auto;
 }
 
-.otsikko{
-    margin-top: 25px;
-    padding: 10px;
+.otsikko {
+  margin-top: 25px;
+  padding: 10px;
 }
 
-.syotto{
-    margin-bottom: 10px;
+.syotto {
+  margin-bottom: 10px;
 }
 
-.lomake{
-    padding: 10px;
-    margin-bottom: 10px;
-    width: 300px;
-    overflow: auto;
+.lomake {
+  padding: 10px;
+  margin-bottom: 10px;
+  width: 330px;
+  overflow: auto;
 }
 
-.listaus{
-    
-    margin-top: 10px;;
-    padding: 10px;
+.listaus {
+  margin-top: 10px;
+  padding: 10px;
 }
 
-#lista{
-    border: 1px solid black;
-    border-radius: 10px; 
-    list-style-type: none;
-    padding: 10px;
-   
+#lista {
+  border: 1px solid black;
+  border-radius: 10px;
+  list-style-type: none;
+  padding: 10px;
 }
 
-#teksti{
-    outline: none;
-    border: 1px solid gray;
-    padding: 3px;
-    border-radius: 5px; 
-  
+#teksti {
+  outline: none;
+  border: 1px solid gray;
+  padding: 3px;
+  border-radius: 5px;
 }
-.naytettavat{
-    margin-top: 10px;
+.naytettavat {
+  margin-top: 10px;
 }
 
-.Lbutton{
-    float: right;
+.Lbutton {
+  float: right;
 }
