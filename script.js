@@ -1,4 +1,4 @@
-// Haetaan elementit ja alustetaan muuttujia
+// Fetch the elements and declare variables
 const kaikki = document.getElementById("kaikki");
 const tekemattomat = document.getElementById("tekemattomat");
 const tehdyt = document.getElementById("tehdyt");
@@ -12,7 +12,7 @@ if (!laskuri) {
 }
 let tunnus2;
 
-// Haetaan tiedot Local Storagesta ja printataan ne ruudulle.
+// Get records from Local storage and print it on screen.
 if (localStorage.length !== null) {
   for (var i = 0; i <= laskuri; i++) {
     let naytettava = localStorage.getItem("js" + i);
@@ -31,7 +31,7 @@ if (localStorage.length !== null) {
   }
 }
 
-// Lähetä napin painalluksen logiikka, tarkistetaan annettu teksti, luetaan tieto ja sijoitetaan se listaan.
+// Send buttons logic, checks the text, reads it and places in list element.
 laheta.addEventListener("click", function () {
   syote = document.getElementById("teksti").value;
 
@@ -43,7 +43,7 @@ laheta.addEventListener("click", function () {
     let data = `<li id="${laskuri}"><input type="checkbox" id = cb${laskuri}><span> ${syote} </span><button type="button" class = Lbutton>Poista</button></li>`;
     localStorage.setItem("js" + laskuri, data);
 
-    // Lisätään raksit checkboxeihin
+    // adds checked to checkboxes
     for (var i = 0; i <= laskuri; i++) {
       let raksi = localStorage.getItem("cb" + i);
       if (raksi !== null) {
@@ -59,7 +59,7 @@ laheta.addEventListener("click", function () {
   }
 });
 
-// Reagoidaan poista napin painallukseen, etsitään oikea lista objekti ja poistetaan se.
+// Reacts to delete button press, finds the right list object and delets it.
 ulLista.addEventListener("click", (event) => {
   if (event.target.tagName === "BUTTON") {
     const reset = event.target;
@@ -69,13 +69,13 @@ ulLista.addEventListener("click", (event) => {
     localStorage.removeItem("js" + tunnus);
     localStorage.removeItem("cb" + tunnus);
     ul.removeChild(li);
-    // Lisätään poiston yhteydessä satunnainen objekti local storageen, jotta palautus "for loop" tekee tarpeeksi kierroksia.
+    // Adds on random object to localstorage in order to not break the "for loop"
     let token = Math.floor(Math.random() * 100000);
     localStorage.setItem(token, JSON.stringify(token));
   }
 });
 
-// Kirjataan klikattu chekbox:i ruksituksi
+// Saves checked and unchecked checkboxes to local storage
 ulLista.addEventListener("change", (event) => {
   if (event.target.type === "checkbox") {
     const checkbox = event.target;
@@ -88,13 +88,13 @@ ulLista.addEventListener("change", (event) => {
   }
 });
 
-// Poista kaikki nappin painalluksella tyhjennetään local Storage ja re-freshataan sovellus.
+// Delete all button, clears the local storage and refreshes the page.
 poistakaikki.addEventListener("click", function () {
   localStorage.clear();
   location.reload();
 });
 
-// Näytetään tehdyt tehtävät napinpainalluksella
+// Shows all tasks marked done
 tehdyt.addEventListener("click", function () {
   ulLista.innerHTML = "";
   if (localStorage.length !== null) {
@@ -119,7 +119,7 @@ tehdyt.addEventListener("click", function () {
   }
 });
 
-// Näytetään tekemättömät työt napin painalluksella
+// Shows the tasks that still need to be done
 tekemattomat.addEventListener("click", function () {
   ulLista.innerHTML = "";
   if (localStorage.length !== null) {
@@ -142,7 +142,7 @@ tekemattomat.addEventListener("click", function () {
   }
 });
 
-// Näytetään kaikki tehtävät napin painalluksella
+// Shows all tasks, done and undone.
 kaikki.addEventListener("click", function () {
   ulLista.innerHTML = "";
   for (var i = 0; i <= laskuri; i++) {
