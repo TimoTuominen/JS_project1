@@ -116,9 +116,6 @@ tekemattomat.addEventListener("click", function () {
       console.log(localStorage.key(i));
       if (naytettava !== null) {
         ulLista.innerHTML += naytettava;
-        let piilotettava = document.getElementById(i);
-        //alert(piilotettava);
-        //piilotettava.style.display = "none";
       }
     }
     for (var i = 0; i <= laskuri; i++) {
@@ -128,6 +125,23 @@ tekemattomat.addEventListener("click", function () {
         naytettava.style.display = "none";
         document.getElementById(raksi).checked = true;
       }
+    }
+  }
+});
+
+kaikki.addEventListener("click", function () {
+  ulLista.innerHTML = "";
+  for (var i = 0; i <= laskuri; i++) {
+    let naytettava = localStorage.getItem("js" + i);
+    console.log(localStorage.key(i));
+    if (naytettava !== null) {
+      ulLista.innerHTML += naytettava;
+    }
+  }
+  for (var i = 0; i <= laskuri; i++) {
+    let raksi = localStorage.getItem("cb" + i);
+    if (raksi !== null) {
+      document.getElementById(raksi).checked = true;
     }
   }
 });
