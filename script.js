@@ -59,6 +59,7 @@ ulLista.addEventListener("click", (event) => {
     const ul = li.parentNode;
     let tunnus = li.getAttribute("id");
     localStorage.removeItem("js" + tunnus);
+    localStorage.removeItem("cb" + tunnus);
     ul.removeChild(li);
     // Lisätään poiston yhteydessä satunnainen objekti local storageen, jotta palautus "for loop" tekee tarpeeksi kierroksia.
     let token = Math.floor(Math.random() * 100000);
@@ -158,4 +159,4 @@ kaikki.addEventListener("click", function () {
   }
 });
 
-console.log(localStorage);
+//console.log(localStorage);
