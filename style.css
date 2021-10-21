@@ -56,26 +56,25 @@ body {
 
 .Lbutton {
   float: right;
-  background-color:#3815b6;
-	border-radius:10px;
-	border:1px solid #184bab;
-	cursor:pointer;
-	color:#ffffff;
-	font-family:Arial;
-	font-size:12px;
-	padding:1px 5px;
-	text-decoration:none;
+  background-color: #3815b6;
+  border-radius: 10px;
+  border: 1px solid #184bab;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: Arial;
+  font-size: 12px;
+  padding: 1px 5px;
+  text-decoration: none;
 }
-.nappi{
-  background-color:#3815b6;
-	border-radius:10px;
-	border:1px solid #184bab;
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	font-family:Arial;
-	font-size:12px;
-	padding:5px 5px;
-	text-decoration:none;
-	
+.nappi {
+  background-color: #3815b6;
+  border-radius: 10px;
+  border: 1px solid #184bab;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: Arial;
+  font-size: 12px;
+  padding: 5px 5px;
+  text-decoration: none;
 }

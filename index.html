@@ -1,35 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Java project 1</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
     <link rel="shortcut icon" href="#" />
   </head>
   <body>
-    <div class = container>
-    <div class = otsikko><h2>To-Do List</h2></div>
-    <div class = runko>
+    <div class="container">
+      <div class="otsikko"><h2>To-Do List</h2></div>
+      <div class="runko">
+        <form class="lomake" action="#">
+          <div class="syotto">
+            <input type="text" id="teksti" />
+            <input type="submit" value="Lisää" id="laheta" class="nappi" />
+            <input
+              type="reset"
+              value="Poista kaikki"
+              id="poistakaikki"
+              class="nappi"
+            />
+          </div>
+          <div class listaus>
+            <ul id="lista"></ul>
+          </div>
 
-      <form class = lomake action="#">
-        <div class = syotto>
-        <input type="text" id = "teksti">
-        <input type="submit" value = "Lisää" id = "laheta" class = "nappi">
-        <input type="reset" value = "Poista kaikki" id = "poistakaikki" class = "nappi">
+          <div class="naytettavat">
+            <input
+              type="submit"
+              value="Näytä kaikki"
+              id="kaikki"
+              class="nappi"
+            />
+            <input
+              type="submit"
+              value="Näytä tekemättömät"
+              id="tekemattomat"
+              class="nappi"
+            />
+            <input
+              type="submit"
+              value="Näytä tehdyt"
+              id="tehdyt"
+              class="nappi"
+            />
+          </div>
+        </form>
       </div>
-       <div class listaus>
-         <ul id = lista></ul>
-        </div>
-
-        <div class = naytettavat>
-          <input type="submit" value = "Näytä kaikki" id = "kaikki" class = "nappi">
-          <input type="submit" value = "Näytä tekemättömät" id = "tekemattomat" class = "nappi">
-          <input type="submit" value = "Näytä tehdyt" id = "tehdyt" class = "nappi">
-        </div>
-    </form>
     </div>
-  </div>
-	<script src="script.js"></script>
+    <script src="script.js"></script>
   </body>
 </html>

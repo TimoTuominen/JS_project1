@@ -1,5 +1,4 @@
 // Haetaan elementit ja alustetaan muuttujia
-
 const kaikki = document.getElementById("kaikki");
 const tekemattomat = document.getElementById("tekemattomat");
 const tehdyt = document.getElementById("tehdyt");
@@ -14,7 +13,6 @@ if (!laskuri) {
 let tunnus2;
 
 // Haetaan tiedot Local Storagesta ja printataan ne ruudulle.
-
 if (localStorage.length !== null) {
   for (var i = 0; i <= laskuri; i++) {
     let naytettava = localStorage.getItem("js" + i);
@@ -34,7 +32,6 @@ if (localStorage.length !== null) {
 }
 
 // Lähetä napin painalluksen logiikka, tarkistetaan annettu teksti, luetaan tieto ja sijoitetaan se listaan.
-
 laheta.addEventListener("click", function () {
   syote = document.getElementById("teksti").value;
 
@@ -63,7 +60,6 @@ laheta.addEventListener("click", function () {
 });
 
 // Reagoidaan poista napin painallukseen, etsitään oikea lista objekti ja poistetaan se.
-
 ulLista.addEventListener("click", (event) => {
   if (event.target.tagName === "BUTTON") {
     const reset = event.target;
@@ -80,7 +76,6 @@ ulLista.addEventListener("click", (event) => {
 });
 
 // Kirjataan klikattu chekbox:i ruksituksi
-
 ulLista.addEventListener("change", (event) => {
   if (event.target.type === "checkbox") {
     const checkbox = event.target;
@@ -94,14 +89,12 @@ ulLista.addEventListener("change", (event) => {
 });
 
 // Poista kaikki nappin painalluksella tyhjennetään local Storage ja re-freshataan sovellus.
-
 poistakaikki.addEventListener("click", function () {
   localStorage.clear();
   location.reload();
 });
 
 // Näytetään tehdyt tehtävät napinpainalluksella
-
 tehdyt.addEventListener("click", function () {
   ulLista.innerHTML = "";
   if (localStorage.length !== null) {
@@ -127,7 +120,6 @@ tehdyt.addEventListener("click", function () {
 });
 
 // Näytetään tekemättömät työt napin painalluksella
-
 tekemattomat.addEventListener("click", function () {
   ulLista.innerHTML = "";
   if (localStorage.length !== null) {
@@ -151,7 +143,6 @@ tekemattomat.addEventListener("click", function () {
 });
 
 // Näytetään kaikki tehtävät napin painalluksella
-
 kaikki.addEventListener("click", function () {
   ulLista.innerHTML = "";
   for (var i = 0; i <= laskuri; i++) {
@@ -170,5 +161,3 @@ kaikki.addEventListener("click", function () {
     }
   }
 });
-
-//console.log(localStorage);
