@@ -23,6 +23,7 @@ if (localStorage.length !== null) {
       tekemattomatMaara++;
     }
   }
+  // checks the checkboxes that where checked and adds line-through them.
   for (var i = 0; i <= laskuri; i++) {
     let raksi = localStorage.getItem("cb" + i);
     if (raksi !== null) {
@@ -101,6 +102,7 @@ ulLista.addEventListener("change", (event) => {
     const yliviivausTunnus = li.getAttribute("id");
     if (checkbox.checked) {
       localStorage.setItem(tunnus2, tunnus2);
+      // Crossing the text over
       document.getElementById("sp" + yliviivausTunnus).style.textDecoration =
         "line-through";
       document.getElementById(
@@ -110,6 +112,7 @@ ulLista.addEventListener("change", (event) => {
       tekemattomatTeksti.innerHTML = `Tekemättömiä töitä: ${tekemattomatMaara}`;
     } else {
       localStorage.removeItem(tunnus2, tunnus2);
+      //removing the crossover
       document.getElementById("sp" + yliviivausTunnus).style.textDecoration =
         "none";
       tekemattomatMaara++;
@@ -136,6 +139,7 @@ tehdyt.addEventListener("click", function () {
         piilotettava.style.display = "none";
       }
     }
+    // Adding checkmarks and line-through
     for (var i = 0; i <= laskuri; i++) {
       let raksi = localStorage.getItem("cb" + i);
       if (raksi !== null) {
@@ -183,6 +187,7 @@ kaikki.addEventListener("click", function () {
       ulLista.innerHTML += naytettava;
     }
   }
+  // Adding checkmarks and line-through
   for (var i = 0; i <= laskuri; i++) {
     let raksi = localStorage.getItem("cb" + i);
     if (raksi !== null) {
