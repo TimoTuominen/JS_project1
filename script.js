@@ -29,6 +29,8 @@ if (localStorage.length !== null) {
       let tarkistus = document.getElementById(raksi);
       if (tarkistus !== null) {
         tarkistus.checked = true;
+        document.getElementById("sp" + i).style.textDecoration = "line-through";
+        document.getElementById("sp" + i).style.textDecorationThickness = "2px";
         tekemattomatMaara--;
       }
     }
@@ -44,17 +46,21 @@ laheta.addEventListener("click", function () {
     alert("Epäkelpo syöte, yritä uudelleen");
     teksti.style.border = "1px solid red";
   } else {
-    ulLista.innerHTML += `<li id="${laskuri}"><input type="checkbox" id = cb${laskuri} ><span> ${syote} </span> <button type="button" class = Lbutton>Poista</button></li>`;
-    let data = `<li id="${laskuri}"><input type="checkbox" id = cb${laskuri}><span> ${syote} </span><button type="button" class = Lbutton>Poista</button></li>`;
+    ulLista.innerHTML += `<li id="${laskuri}"><input type="checkbox" id = cb${laskuri} ><span id = sp${laskuri}> ${syote} </span> <button type="button" class = Lbutton>Poista</button></li>`;
+    let data = `<li id="${laskuri}"><input type="checkbox" id = cb${laskuri}><span id = sp${laskuri}> ${syote} </span><button type="button" class = Lbutton>Poista</button></li>`;
     localStorage.setItem("js" + laskuri, data);
 
-    // adds checked to checkboxes
+    // adds checked to checkboxes and line through the text
     for (var i = 0; i <= laskuri; i++) {
       let raksi = localStorage.getItem("cb" + i);
       if (raksi !== null) {
         let tarkistus = document.getElementById(raksi);
         if (tarkistus !== null) {
           tarkistus.checked = true;
+          document.getElementById("sp" + i).style.textDecoration =
+            "line-through";
+          document.getElementById("sp" + i).style.textDecorationThickness =
+            "2px";
         }
       }
     }
@@ -90,13 +96,22 @@ ulLista.addEventListener("click", (event) => {
 ulLista.addEventListener("change", (event) => {
   if (event.target.type === "checkbox") {
     const checkbox = event.target;
+    const li = checkbox.parentNode;
     tunnus2 = checkbox.getAttribute("id");
+    const yliviivausTunnus = li.getAttribute("id");
     if (checkbox.checked) {
       localStorage.setItem(tunnus2, tunnus2);
+      document.getElementById("sp" + yliviivausTunnus).style.textDecoration =
+        "line-through";
+      document.getElementById(
+        "sp" + yliviivausTunnus
+      ).style.textDecorationThickness = "2px";
       tekemattomatMaara--;
       tekemattomatTeksti.innerHTML = `Tekemättömiä töitä: ${tekemattomatMaara}`;
     } else {
       localStorage.removeItem(tunnus2, tunnus2);
+      document.getElementById("sp" + yliviivausTunnus).style.textDecoration =
+        "none";
       tekemattomatMaara++;
       tekemattomatTeksti.innerHTML = `Tekemättömiä töitä: ${tekemattomatMaara}`;
     }
@@ -125,6 +140,8 @@ tehdyt.addEventListener("click", function () {
       let raksi = localStorage.getItem("cb" + i);
       if (raksi !== null) {
         let naytettava = document.getElementById(raksi).parentNode;
+        document.getElementById("sp" + i).style.textDecoration = "line-through";
+        document.getElementById("sp" + i).style.textDecorationThickness = "2px";
         if (naytettava !== null) {
           naytettava.style.display = "block";
           document.getElementById(raksi).checked = true;
@@ -172,6 +189,8 @@ kaikki.addEventListener("click", function () {
       let tarkistus = document.getElementById(raksi);
       if (tarkistus !== null) {
         tarkistus.checked = true;
+        document.getElementById("sp" + i).style.textDecoration = "line-through";
+        document.getElementById("sp" + i).style.textDecorationThickness = "2px";
       }
     }
   }
