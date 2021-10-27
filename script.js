@@ -6,7 +6,9 @@ const ulLista = document.getElementById("lista");
 let syote = document.getElementById("teksti").value;
 const laheta = document.getElementById("laheta");
 const poistakaikki = document.getElementById("poistakaikki");
+const tekemattomatTeksti = document.getElementById("tekematta");
 let laskuri = localStorage.length;
+let tekemattomatMaara = 0;
 if (!laskuri) {
   laskuri = 0;
 }
@@ -18,6 +20,7 @@ if (localStorage.length !== null) {
     let naytettava = localStorage.getItem("js" + i);
     if (naytettava !== null) {
       ulLista.innerHTML += naytettava;
+      tekemattomatMaara++;
     }
   }
   for (var i = 0; i <= laskuri; i++) {
@@ -26,9 +29,11 @@ if (localStorage.length !== null) {
       let tarkistus = document.getElementById(raksi);
       if (tarkistus !== null) {
         tarkistus.checked = true;
+        tekemattomatMaara--;
       }
     }
   }
+  tekemattomatTeksti.innerHTML = `Tekemättömiä töitä: ${tekemattomatMaara}`;
 }
 
 // Send buttons logic, checks the text, reads it and places in list element.
@@ -55,6 +60,8 @@ laheta.addEventListener("click", function () {
     }
 
     laskuri++;
+    tekemattomatMaara++;
+    tekemattomatTeksti.innerHTML = `Tekemättömiä töitä: ${tekemattomatMaara}`;
     teksti.style.border = "1px solid grey";
   }
 });
@@ -82,8 +89,12 @@ ulLista.addEventListener("change", (event) => {
     tunnus2 = checkbox.getAttribute("id");
     if (checkbox.checked) {
       localStorage.setItem(tunnus2, tunnus2);
+      tekemattomatMaara--;
+      tekemattomatTeksti.innerHTML = `Tekemättömiä töitä: ${tekemattomatMaara}`;
     } else {
       localStorage.removeItem(tunnus2, tunnus2);
+      tekemattomatMaara++;
+      tekemattomatTeksti.innerHTML = `Tekemättömiä töitä: ${tekemattomatMaara}`;
     }
   }
 });
