@@ -73,6 +73,10 @@ ulLista.addEventListener("click", (event) => {
     const li = reset.parentNode;
     const ul = li.parentNode;
     let tunnus = li.getAttribute("id");
+    if (document.getElementById("cb" + tunnus).checked == "") {
+      tekemattomatMaara--;
+      tekemattomatTeksti.innerHTML = `Tekemättömiä töitä: ${tekemattomatMaara}`;
+    }
     localStorage.removeItem("js" + tunnus);
     localStorage.removeItem("cb" + tunnus);
     ul.removeChild(li);
